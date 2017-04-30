@@ -1,0 +1,8 @@
+*.php eol=lf
+*.sh eol=lf
+
+*.ttf binary
+*.ico binary
+*.svg binary
+*.png binary
+*.jpg binary

@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+
+  app:
+    build: ./app
+    hostname: app
+    networks:
+      ttb:
+        aliases:
+          - app.app.ttb
+    ports:
+      - "${SERVICE_SSH_EXTERNAL_PORT}:22"
+    volumes:
+      - php-data:/data
+      - mysql-data:/var/lib/mysql
+    environment:
+      VIRTUAL_HOST: "bot.telegram.tvp.pvlg.net,phpmyadmin.bot.telegram.tvp.pvlg.net"
+    restart: always
+
+volumes:
+  mysql-data:
+    driver: local
+  php-data:
+    driver: local
+
+networks:
+  ttb:
+    driver: bridge
