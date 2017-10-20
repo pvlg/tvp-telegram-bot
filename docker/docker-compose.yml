@@ -15,7 +15,7 @@ services:
       - php-data:/data
       - mysql-data:/var/lib/mysql
     environment:
-      VIRTUAL_HOST: "bot.telegram.tvp.pvlg.net,phpmyadmin.bot.telegram.tvp.pvlg.net"
+      VIRTUAL_HOST: "bot.telegram.tvp.pvlg.net"
     restart: always
 
 volumes:
