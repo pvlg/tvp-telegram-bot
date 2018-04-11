@@ -17,5 +17,7 @@ class BotController extends Controller
         }
 
         require Yii::getAlias('@root/backend/views/bot/bot.php');
+
+        sleep(1800);
     }
 }
