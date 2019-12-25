@@ -186,8 +186,6 @@ function handler($VK_ACCESS_TOKEN, $post_id, $str) //Обрабатывает п
     return $str;
 }
 
-
-
 $mysqli = mysqli_connect($dblocation, $dbuser, $dbpasswd, $dbname);
 $mysqli->set_charset("utf8mb4");
 
@@ -540,7 +538,7 @@ if (strlen($content) <= 1) {//если скрипт вызван без аргу
                 while ($row = $res->fetch_assoc()) {//обнавляем данные для статистики
                     $mysqli->query("UPDATE Statistics SET `INCOMING`=" . ($row['INCOMING'] + 1));
                 }
-                
+
                 $update1 = sendMessage($URL, $mysqli,  $chatID, $message, false, json_encode($resp), $re['ID_MESSAGE'], $re['LANG']);
                 $mysqli->query("UPDATE `Chats` SET `ID_MESSAGE`=" . $update1['result']['message_id'] . " WHERE `CHAT_ID`=" . $chatID);
             } else {//если сообщение от кнопки
