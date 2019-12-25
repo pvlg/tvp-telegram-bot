@@ -42,12 +42,10 @@ RUN chown -R www-data:www-data /var/www
 RUN gosu www-data composer global require "fxp/composer-asset-plugin:^1.2.0"
 
 # Configure ssh
-RUN mkdir /var/run/sshd
-RUN chsh -s /bin/bash www-data
-RUN sed -ri "s/(ChallengeResponseAuthentication) .*$/\1 no/" /etc/ssh/sshd_config
-RUN sed -ri "s/(UsePAM) .*$/\1 no/" /etc/ssh/sshd_config
-RUN sed -ri "s/#(PasswordAuthentication) .*$/\1 no/" /etc/ssh/sshd_config
-RUN mkdir -p /var/www/.ssh
+RUN chsh -s /bin/bash www-data && \
+    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    mkdir -p /var/www/.ssh && \
+    chown -R www-data:www-data /var/www
 
 # Configure supervisor
 #RUN echo "files = /etc/supervisor/conf.d/*.conf" >> /etc/supervisor/supervisord.conf

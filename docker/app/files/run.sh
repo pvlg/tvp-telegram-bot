@@ -3,6 +3,8 @@
 chown -R www-data:www-data /data
 chown -R www-data:www-data /var/www
 
+echo "www-data:${WWW_DATA_PASSWORD}" | chpasswd
+
 service mysql start
 service nginx start
 service ssh start
