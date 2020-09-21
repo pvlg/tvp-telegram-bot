@@ -115,10 +115,10 @@ function newsletter($URL, $mysqli, $ID, $TS, $str, $postLink, $statCount, $langu
 {
     if ($TS == 'VK') {
         $post_id = substr_replace($postLink, '', 0, strripos($postLink, '?w=wall') + 7);
-        Request('https://bot.telegram.tvp.pvlg.net/repost.php?ok=1&fb=0&vk_post=' . $post_id . '&token=B5msBUDvRiGoOCvdbWHzUGabbk519y');//перепостер ок
-        if ($ID == 10) {
-            Request('https://bot.telegram.tvp.pvlg.net/repost.php?ok=0&fb=1&vk_post=' . $post_id . '&token=B5msBUDvRiGoOCvdbWHzUGabbk519y');
-        }//перепостер фб
+//         Request('https://bot.telegram.tvp.pvlg.net/repost.php?ok=1&fb=0&vk_post=' . $post_id . '&token=B5msBUDvRiGoOCvdbWHzUGabbk519y');//перепостер ок
+//         if ($ID == 10) {
+//             Request('https://bot.telegram.tvp.pvlg.net/repost.php?ok=0&fb=1&vk_post=' . $post_id . '&token=B5msBUDvRiGoOCvdbWHzUGabbk519y');
+//         }//перепостер фб
         $str = handler($VK_ACCESS_TOKEN, $post_id, $str);
     }
 
